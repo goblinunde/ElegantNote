@@ -81,6 +81,26 @@ xelatex latex-tutorial.tex
 | 图标 | `fontawesome5` | 上千个矢量图标 |
 | 现代编程 | `expl3`, `xparse` | LaTeX3 编程支持 |
 
+### 🚀 自动构建 (GitHub Actions)
+
+每次推送到 `main` 分支时，GitHub Actions 会自动：
+
+1. 使用 XeLaTeX 编译文档
+2. 上传 PDF 到 Artifacts
+3. 更新 `latest` Release 预发布版
+
+**发布正式版本**：
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+推送 tag 后会自动创建正式 Release 并附带 PDF。
+
+[![Build Status](https://github.com/goblinunde/ElegantNote/actions/workflows/build-latex.yml/badge.svg)](https://github.com/goblinunde/ElegantNote/actions)
+[![Latest Release](https://img.shields.io/github/v/release/goblinunde/ElegantNote?include_prereleases)](https://github.com/goblinunde/ElegantNote/releases/latest)
+
 ---
 
 # License
