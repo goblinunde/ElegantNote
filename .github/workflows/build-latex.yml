@@ -18,24 +18,11 @@ jobs:
       - name: 📥 Checkout repository
         uses: actions/checkout@v4
       
-      - name: 🔧 Setup TinyTeX
-        uses: r-lib/actions/setup-tinytex@v2
-        env:
-          TINYTEX_INSTALLER: TinyTeX-1
-      
-      - name: 📦 Install LaTeX packages
-        run: |
-          tlmgr install ctex fontawesome5 pgfplots cancel ulem enumitem \
-            booktabs mdframed zref needspace titlesec appendix \
-            listings xcolor hyperref cleveref caption footmisc \
-            tikz-cd pgf fancyhdr geometry lastpage etoolbox \
-            xkeyval environ trimspaces sourcesanspro sourcecodepro \
-            xecjk ctexbook
-      
-      - name: 🔨 Compile LaTeX document
-        run: |
-          xelatex -interaction=nonstopmode latex-tutorial.tex
-          xelatex -interaction=nonstopmode latex-tutorial.tex
+      - name: 🔧 Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: latex-tutorial.tex
+          latexmk_use_xelatex: true
       
       - name: 📦 Upload PDF artifact
         uses: actions/upload-artifact@v4
