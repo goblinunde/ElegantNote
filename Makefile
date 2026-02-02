@@ -3,6 +3,7 @@
 
 # 💡 主要文档
 MAIN = latex-tutorial
+NOTES = real-analysis-notes
 DOCS = elegantnote-cn elegantnote-en
 
 # 💡 编译器设置
@@ -15,10 +16,10 @@ YELLOW = \033[0;33m
 CYAN = \033[0;36m
 NC = \033[0m # No Color
 
-.PHONY: all tutorial docs clean distclean watch help
+.PHONY: all tutorial notes docs clean distclean watch help
 
 # 默认目标：编译教程
-all: tutorial
+all: tutorial notes
 
 # 编译 LaTeX 教程
 tutorial: $(MAIN).pdf
@@ -29,6 +30,16 @@ $(MAIN).pdf: $(MAIN).tex elegantnote.cls
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
 	@echo "$(YELLOW)→ 第二遍编译（更新目录）...$(NC)"
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
+
+# 编译实变函数笔记
+notes: $(NOTES).pdf
+	@echo "$(GREEN)✓ $(NOTES).pdf 编译完成$(NC)"
+
+$(NOTES).pdf: $(NOTES).tex elegantnote.cls
+	@echo "$(CYAN)→ 编译 $(NOTES).tex ...$(NC)"
+	$(LATEX) $(LATEXFLAGS) $(NOTES).tex
+	@echo "$(YELLOW)→ 第二遍编译（更新目录）...$(NC)"
+	$(LATEX) $(LATEXFLAGS) $(NOTES).tex
 
 # 编译官方文档
 docs: $(addsuffix .pdf,$(DOCS))
