@@ -547,6 +547,8 @@ $\ddots$ & \verb|\ddots| & 对角线省略 \\
   E = mc^2
 \end{equation}
 
+使用 \verb|equation*| 或 \verb|\[...\]| 创建不编号公式。
+
 \subsection{align 环境}
 
 多行对齐公式，使用 \verb|&| 标记对齐点：
@@ -564,6 +566,50 @@ $\ddots$ & \verb|\ddots| & 对角线省略 \\
           &= x^2 + 2xy + y^2
 \end{align}
 
+\begin{example}[多列对齐 (alignat)]
+使用 \verb|alignat| 创建多组对齐：
+\begin{alignat}{2}
+  x &= r\cos\theta &\qquad y &= r\sin\theta \\
+  r &= \sqrt{x^2+y^2} &\qquad \theta &= \arctan\frac{y}{x}
+\end{alignat}
+\end{example}
+
+\subsection{gather 环境}
+
+多行居中公式（无对齐）：
+
+\begin{lstlisting}
+\begin{gather}
+  a + b = c \\
+  x^2 + y^2 = z^2 \\
+  e^{i\pi} + 1 = 0
+\end{gather}
+\end{lstlisting}
+
+效果：
+\begin{gather}
+  a + b = c \\
+  x^2 + y^2 = z^2 \\
+  e^{i\pi} + 1 = 0
+\end{gather}
+
+\subsection{multline 环境}
+
+超长公式拆分（首行左对齐，末行右对齐）：
+
+\begin{lstlisting}
+\begin{multline}
+  p(x) = x^8 + x^7 + x^6 + x^5 \\
+       + x^4 + x^3 + x^2 + x + 1
+\end{multline}
+\end{lstlisting}
+
+效果：
+\begin{multline}
+  p(x) = x^8 + x^7 + x^6 + x^5 \\
+       + x^4 + x^3 + x^2 + x + 1
+\end{multline}
+
 \subsection{cases 环境}
 
 分段函数定义：
@@ -580,6 +626,60 @@ $\ddots$ & \verb|\ddots| & 对角线省略 \\
   x  & \text{if } x \geq 0 \\
   -x & \text{if } x < 0
 \end{cases} \]
+
+\begin{example}[rcases 环境（右侧大括号）]
+\[
+\left.
+\begin{aligned}
+  x &= a + b \\
+  y &= c + d
+\end{aligned}
+\right\} \quad \text{两组方程}
+\]
+\end{example}
+
+\subsection{split 环境}
+
+在 \verb|equation| 内拆分公式（共享一个编号）：
+
+\begin{equation}
+\begin{split}
+  (a+b)^3 &= (a+b)(a+b)^2 \\
+          &= (a+b)(a^2+2ab+b^2) \\
+          &= a^3 + 3a^2b + 3ab^2 + b^3
+\end{split}
+\end{equation}
+
+\subsection{subequations 环境}
+
+给相关公式编子编号 (1a), (1b)：
+
+\begin{subequations}
+\begin{align}
+  \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\
+  \nabla \cdot \mathbf{B} &= 0 \\
+  \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+  \nabla \times \mathbf{B} &= \mu_0\mathbf{J} + \mu_0\varepsilon_0\frac{\partial \mathbf{E}}{\partial t}
+\end{align}
+\end{subequations}
+
+\begin{table}[htbp]
+\centering
+\caption{数学环境速查}
+\begin{tabular}{lp{8cm}}
+\toprule
+环境 & 用途 \\
+\midrule
+\verb|equation| & 单行公式，带编号 \\
+\verb|align| & 多行对齐公式 \\
+\verb|gather| & 多行居中公式 \\
+\verb|multline| & 超长公式拆分 \\
+\verb|split| & equation 内拆分 \\
+\verb|cases| & 分段函数 \\
+\verb|subequations| & 子编号 (1a), (1b) \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 %% =============================================================================
 %% 第十部分：注解与标注
@@ -649,7 +749,7 @@ $\gcd$ & \verb|\gcd| & $\min$ & \verb|\min| & $\max$ & \verb|\max| & $\lim$ & \v
 \clearpage
 \section{高级数学主题}
 
-本节介绍在专业数学文档中常见的符号，涵盖泛函分析和神经网络等领域。
+本节介绍在专业数学文档中常见的符号，涵盖泛函分析、概率论、微分方程和神经网络等领域。
 
 \subsection{泛函分析}
 
@@ -664,14 +764,73 @@ $\|x\|$ & \texttt{\textbackslash|x\textbackslash|} & 范数 \\
 $\|x\|_p$ & \texttt{\textbackslash|x\textbackslash|\_p} & $L^p$ 范数 \\
 $\langle x, y \rangle$ & \verb|\langle x, y \rangle| & 内积 \\
 $x \perp y$ & \verb|x \perp y| & 正交 \\
+$X^*$ & \verb|X^*| & 对偶空间 \\
+$\oplus$ & \verb|\oplus| & 直和 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{example}[泛函分析典型公式]
 \begin{align*}
-\|f\|_{L^p} &= \left( \int_\Omega |f(x)|^p \, dx \right)^{1/p} \\
-\langle f, g \rangle_{L^2} &= \int_\Omega f(x) \overline{g(x)} \, dx
+\|f\|_{L^p} &= \left( \int_\Omega |f(x)|^p \, dx \right)^{1/p} && \text{（$L^p$ 范数）} \\
+\langle f, g \rangle_{L^2} &= \int_\Omega f(x) \overline{g(x)} \, dx && \text{（$L^2$ 内积）} \\
+X &= \ker T \oplus (\ker T)^\perp && \text{（正交分解）}
+\end{align*}
+\end{example}
+
+\subsection{概率论与统计}
+
+\begin{table}[htbp]
+\centering
+\caption{概率论常用符号}
+\begin{tabular}{llp{5cm}}
+\toprule
+效果 & 代码 & 说明 \\
+\midrule
+$P(A)$ & \verb|P(A)| & 概率 \\
+$P(A|B)$ & \verb|P(A|B)| & 条件概率 \\
+$\mathbb{E}[X]$ & \verb|\mathbb{E}[X]| & 期望 \\
+$\mathrm{Var}(X)$ & \verb|\mathrm{Var}(X)| & 方差 \\
+$X \sim \mathcal{N}(\mu, \sigma^2)$ & \verb|X \sim \mathcal{N}(...)| & 正态分布 \\
+$\perp\!\!\!\perp$ & \verb|\perp\!\!\!\perp| & 独立 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{example}[概率论典型公式]
+\begin{align*}
+P(A|B) &= \frac{P(B|A)P(A)}{P(B)} && \text{（贝叶斯定理）} \\
+\mathbb{E}[X] &= \int_{-\infty}^{\infty} x f(x) \, dx && \text{（连续型期望）} \\
+\mathrm{Var}(X) &= \mathbb{E}[X^2] - \mathbb{E}[X]^2 && \text{（方差公式）}
+\end{align*}
+\end{example}
+
+\subsection{偏微分方程 (PDE)}
+
+\begin{table}[htbp]
+\centering
+\caption{PDE 常用符号}
+\begin{tabular}{llp{5cm}}
+\toprule
+效果 & 代码 & 说明 \\
+\midrule
+$\partial u / \partial t$ & \verb|\partial u / \partial t| & 偏导数 \\
+$\nabla u$ & \verb|\nabla u| & 梯度 \\
+$\nabla \cdot \mathbf{F}$ & \verb|\nabla \cdot \mathbf{F}| & 散度 \\
+$\nabla \times \mathbf{F}$ & \verb|\nabla \times \mathbf{F}| & 旋度 \\
+$\Delta u$ & \verb|\Delta u| & 拉普拉斯算子 \\
+$\Omega$ & \verb|\Omega| & 求解域 \\
+$\partial \Omega$ & \verb|\partial \Omega| & 边界 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{example}[经典 PDE]
+\begin{align*}
+\frac{\partial u}{\partial t} &= \alpha \Delta u && \text{（热传导方程）} \\
+\frac{\partial^2 u}{\partial t^2} &= c^2 \Delta u && \text{（波动方程）} \\
+\Delta u &= 0 && \text{（拉普拉斯方程）} \\
+-\Delta u &= f && \text{（泊松方程）}
 \end{align*}
 \end{example}
 
@@ -685,9 +844,11 @@ $x \perp y$ & \verb|x \perp y| & 正交 \\
 效果 & 代码 & 说明 \\
 \midrule
 $\mathbf{W}$ & \verb|\mathbf{W}| & 权重矩阵 \\
+$\mathbf{b}$ & \verb|\mathbf{b}| & 偏置向量 \\
 $\hat{\mathbf{y}}$ & \verb|\hat{\mathbf{y}}| & 预测值 \\
 $\mathcal{L}$ & \verb|\mathcal{L}| & 损失函数 \\
 $\nabla_\theta \mathcal{L}$ & \verb|\nabla_\theta \mathcal{L}| & 梯度 \\
+$\eta$ & \verb|\eta| & 学习率 \\
 $\odot$ & \verb|\odot| & Hadamard 积 \\
 \bottomrule
 \end{tabular}
@@ -696,10 +857,19 @@ $\odot$ & \verb|\odot| & Hadamard 积 \\
 \begin{example}[神经网络核心公式]
 \begin{align*}
 \sigma(x) &= \frac{1}{1 + e^{-x}} && \text{（Sigmoid）} \\
-\mathrm{ReLU}(x) &= \max(0, x) && \\
-\mathrm{softmax}(z_i) &= \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} && \\
+\mathrm{ReLU}(x) &= \max(0, x) && \text{（ReLU）} \\
+\mathrm{softmax}(z_i) &= \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} && \text{（Softmax）} \\
+\mathcal{L}_{\text{CE}} &= -\sum_{i=1}^N y_i \log(\hat{y}_i) && \text{（交叉熵）} \\
 \theta_{t+1} &= \theta_t - \eta \nabla_\theta \mathcal{L} && \text{（SGD）}
 \end{align*}
+\end{example}
+
+\begin{example}[PINNs 损失函数]
+物理信息神经网络 (Physics-Informed Neural Networks)：
+\[
+\mathcal{L} = \underbrace{\mathcal{L}_{\text{data}}}_{\text{数据项}} + \lambda \underbrace{\mathcal{L}_{\text{PDE}}}_{\text{物理约束}}
+\]
+其中 $\mathcal{L}_{\text{PDE}} = \frac{1}{N_r}\sum_{i=1}^{N_r} |F(u_\theta)|^2$ 为 PDE 残差。
 \end{example}
 
 %% =============================================================================
@@ -844,7 +1014,7 @@ Font Awesome 5 提供了上千个矢量图标，可以让你的文档更加生�
 \clearpage
 \section{LaTeX3 (expl3) 编程}
 
-LaTeX3 是 \LaTeX{} 的现代化编程层，提供了一致的命名约定和强大的编程能力。
+LaTeX3 是 \LaTeX{} 的现代化编程层，提供了一致的命名约定和强大的编程能力。掌握 expl3 可以让你编写更优雅、更可维护的宏包。
 
 \subsection{命名约定}
 
@@ -853,27 +1023,51 @@ expl3 使用 \verb|模块_函数:参数说明| 的命名格式：
 \begin{table}[htbp]
 \centering
 \caption{expl3 模块简介}
-\begin{tabular}{lll}
+\begin{tabular}{llp{5cm}}
 \toprule
-模块 & 描述 & 示例 \\
+模块 & 描述 & 典型用途 \\
 \midrule
-\verb|int| & 整数 & \verb|\int_step_inline:nn| \\
-\verb|tl| & Token List & \verb|\tl_set:Nn| \\
-\verb|str| & 字符串 & \verb|\str_if_eq:nnTF| \\
-\verb|seq| & 序列 & \verb|\seq_push:Nn| \\
-\verb|fp| & 浮点数 & \verb|\fp_eval:n| \\
+\verb|int| & 整数 & 计数器、循环 \\
+\verb|tl| & Token List & 文本处理 \\
+\verb|str| & 字符串 & 字符串比较、操作 \\
+\verb|seq| & 序列（列表） & 存储多个元素 \\
+\verb|prop| & 属性列表（字典） & 键值对存储 \\
+\verb|fp| & 浮点数 & 数学计算 \\
+\verb|bool| & 布尔值 & 条件判断 \\
+\verb|clist| & 逗号分隔列表 & 参数解析 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{参数说明符}
+
+函数名冒号后的字母表示参数类型：
+
+\begin{table}[htbp]
+\centering
+\caption{expl3 参数说明符}
+\begin{tabular}{llp{6cm}}
+\toprule
+说明符 & 含义 & 示例 \\
+\midrule
+\verb|n| & 不展开 (braced) & \verb|\tl_set:Nn \l_my_tl {text}| \\
+\verb|N| & 单个 token & \verb|\tl_use:N \l_my_tl| \\
+\verb|c| & 命令名（字符串构造） & \verb|\cs_new:cn {mycmd} {...}| \\
+\verb|V/v| & 变量值展开 & \verb|\tl_set:NV \l_a_tl \l_b_tl| \\
+\verb|x/e| & 完全展开 & \verb|\tl_set:Nx \l_my_tl {...}| \\
+\verb|T/F| & True/False 分支 & \verb|\bool_if:NTF \l_flag {...} {...}| \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{xparse 文档命令}
 
-\verb|xparse| 提供了灵活的命令定义方式：
+\verb|xparse| 提供了灵活的文档级命令定义：
 
 \begin{table}[htbp]
 \centering
 \caption{xparse 参数类型}
-\begin{tabular}{lll}
+\begin{tabular}{llp{5cm}}
 \toprule
 类型 & 描述 & 示例用法 \\
 \midrule
@@ -881,9 +1075,46 @@ expl3 使用 \verb|模块_函数:参数说明| 的命名格式：
 \verb|o| & 可选参数 & \verb|[选项]| \\
 \verb|O{默认}| & 带默认值可选参数 & 省略时用默认值 \\
 \verb|s| & 星号标记 & \verb|*| \\
+\verb|d<>| & 自定义分隔符可选参数 & \verb|<选项>| \\
+\verb|r<>| & 自定义分隔符必选参数 & \verb|<内容>| \\
+\verb|g| & 可选花括号参数 & \verb|{内容}| 或省略 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{example}[自定义命令示例]
+定义带可选参数的高亮命令：
+
+\begin{lstlisting}
+\NewDocumentCommand{\highlight}{O{yellow} m}{%
+  \colorbox{#1}{#2}%
+}
+% 用法: \highlight{text} 或 \highlight[cyan]{text}
+\end{lstlisting}
+\end{example}
+
+\begin{example}[expl3 循环示例]
+使用整数循环生成内容：
+
+\begin{lstlisting}
+\ExplSyntaxOn
+\int_step_inline:nn {5} { Item~#1,~ }
+\ExplSyntaxOff
+\end{lstlisting}
+
+输出：Item 1, Item 2, Item 3, Item 4, Item 5,
+\end{example}
+
+\begin{example}[浮点数计算]
+expl3 支持高精度浮点运算：
+
+\begin{lstlisting}
+\ExplSyntaxOn
+\fp_eval:n { sin(1.5708) }  % 约等于 1
+\fp_eval:n { sqrt(2) }       % 约等于 1.4142
+\ExplSyntaxOff
+\end{lstlisting}
+\end{example}
 
 %% =============================================================================
 %% 参考资源
