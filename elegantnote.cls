@@ -205,7 +205,7 @@
   % change 环境 - 用于更新/变更内容列表
   \newenvironment{change}{%
     \vspace{0.5em}
-    \begin{enumerate}[label={\protect\faPencilAlt}\ ,leftmargin=2em,itemsep=0.2em]
+    \begin{enumerate}[label={\protect\faEdit}\ ,leftmargin=2em,itemsep=0.2em]
   }{%
     \end{enumerate}
     \vspace{0.5em}
