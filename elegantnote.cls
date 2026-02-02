@@ -194,6 +194,22 @@
   \setlength{\parindent}{2em}
   \newcommand{\keywords}[1]{%
     \vskip2ex\par\noindent\normalfont{\bfseries 关键词: } #1}
+  % introduction 环境 - 用于章节要点列表
+  \newenvironment{introduction}{%
+    \vspace{0.5em}
+    \begin{enumerate}[label={\protect\faCircle}\ ,leftmargin=2em,itemsep=0.2em]
+  }{%
+    \end{enumerate}
+    \vspace{0.5em}
+  }
+  % change 环境 - 用于更新/变更内容列表
+  \newenvironment{change}{%
+    \vspace{0.5em}
+    \begin{enumerate}[label={\protect\faPencilAlt}\ ,leftmargin=2em,itemsep=0.2em]
+  }{%
+    \end{enumerate}
+    \vspace{0.5em}
+  }
   }{\relax}
 
 \ifdefstring{\ELEGANT@lang}{en}{
