@@ -1,0 +1,78 @@
+<!-- Author: Dongsheng Deng -->
+<!-- Email: ddswhu@outlook.com -->
+
+# ElegantNote
+
+[Homepage](https://elegantlatex.org/) | [Github](https://github.com/ElegantLaTeX/ElegantNote) | [CTAN](https://ctan.org/pkg/elegantnote) | [Download](https://github.com/ElegantLaTeX/ElegantNote/releases) | [Wiki](https://github.com/ElegantLaTeX/ElegantNote/wiki) | [Weibo](https://weibo.com/elegantlatex)
+
+![License](https://img.shields.io/ctan/l/elegantnote.svg)
+![CTAN Version](https://img.shields.io/ctan/v/elegantnote.svg)
+![Github Version](https://img.shields.io/github/release/ElegantLaTeX/ElegantNote.svg)
+![Repo Size](https://img.shields.io/github/repo-size/ElegantLaTeX/ElegantNote.svg)
+
+ElegantNote is designed for Notes. Just enjoy it! If you have any questions, suggestions or bug reports, you can create issues, pull requests or email us at <elegantlatex2e@gmail.com>.
+
+设计 ElegantNote 是为了方便记录笔记和阅读笔记。如果你有其他问题、建议或者报告 bug，可以提交 issues 或者给我们发邮件：<elegantlatex2e@gmail.com>。
+
+---
+
+## 📚 LaTeX 数学符号与语法快速参考教程
+
+本仓库包含一份基于 ElegantNote 模板制作的 **LaTeX 数学符号与语法快速参考教程** (`latex-tutorial.tex`)，是学习和查阅 LaTeX 数学排版的实用指南。
+
+### ✨ 教程特色
+
+- **前言引导**：介绍教程目的和使用方式，帮助读者快速上手
+- **自然过渡**：各章节间有衔接文字，内容逻辑清晰连贯
+- **丰富对比展示**：
+  - 行内模式 vs 行间模式显示效果对比
+  - 希腊字母标准形式与变体形式对照
+  - 6 种矩阵环境效果一览表
+  - 大型运算符多维度对比
+- **专业排版**：使用 `booktabs` 表格、`infobox` 提示框、Font Awesome 图标
+- **实用示例**：涵盖数学公式、TikZ 绘图、PGFPlots 函数图、神经网络可视化
+
+### 📖 教程目录
+
+1. **入门** - 数学模式基础、行内/行间公式
+2. **希腊字母** - 小写、大写、变体形式
+3. **上下标与修饰符号** - 幂指数、重音符号
+4. **分数与根号** - 多种分数写法、根号语法
+5. **运算符** - 二元运算符、大型运算符
+6. **关系符号** - 等式/不等式、集合论、逻辑符号
+7. **括号与分隔符** - 自动/手动大小调整
+8. **矩阵与数组** - 各种矩阵环境
+9. **常用数学环境** - equation、align、cases
+10. **注解与标注** - 删除线、方框、括号标注
+11. **常用数学函数** - 预定义函数名
+12. **高级数学主题** - 泛函分析、神经网络符号
+13. **TikZ 绘图** - 基本图形、节点、神经网络可视化
+14. **Font Awesome 图标** - 常用图标速查
+15. **LaTeX3 编程** - expl3 基础、xparse 命令
+
+### 🔧 编译方式
+
+```bash
+xelatex latex-tutorial.tex
+```
+
+> 需要安装 TeX Live 2020+ 或 MiKTeX，推荐使用 XeLaTeX 引擎编译。
+
+### 📦 增强功能（elegantnote.cls 扩展）
+
+模板类文件已扩展以下现代 LaTeX 功能：
+
+| 功能 | 宏包 | 说明 |
+|------|------|------|
+| 绘图 | `tikz` | 矢量图形、节点图、流程图 |
+| 数据可视化 | `pgfplots` | 函数图、数据图表 |
+| 图标 | `fontawesome5` | 上千个矢量图标 |
+| 现代编程 | `expl3`, `xparse` | LaTeX3 编程支持 |
+
+---
+
+# License
+
+This work is released under the LaTeX Project Public License, v1.3c or later.
+
+本模板发布遵循 LaTeX 项目公共许可证 1.3 c 或更高版本。
