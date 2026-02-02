@@ -52,11 +52,23 @@ ElegantNote is designed for Notes. Just enjoy it! If you have any questions, sug
 
 ### 🔧 编译方式
 
+使用 Makefile 管理编译：
+
+```bash
+make          # 编译 LaTeX 教程
+make tutorial # 编译 LaTeX 教程（同上）
+make docs     # 编译官方文档 (cn/en)
+make clean    # 清理辅助文件
+make distclean# 深度清理（包括 PDF）
+make watch    # 监视文件变化自动编译
+make help     # 显示帮助信息
+```
+
+或直接使用 XeLaTeX：
+
 ```bash
 xelatex latex-tutorial.tex
 ```
-
-> 需要安装 TeX Live 2020+ 或 MiKTeX，推荐使用 XeLaTeX 引擎编译。
 
 ### 📦 增强功能（elegantnote.cls 扩展）
 
